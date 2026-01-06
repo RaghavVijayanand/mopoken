@@ -1,0 +1,257 @@
+Objects:
+
+class bank
+- ifsc code : int
+- location : String
+- branch name : String
+- swift code : String
+
+class customer
+- name : String
+- customer id : String
+- phone number : int
+- email : String
+- date of birth : int
+- identity card(aadhar) : int
+- address : String
+- kyc status : String
+
+prospect
+- name : String
+- phone number : int
+- email : String
+- source : String
+- interest level : String
+
+product
+- cards
+   => credit
+        -> card number : int
+        -> cvv : int
+        -> expire : int
+        -> password : int
+        -> credit limit : int
+        -> balance payable amount : int
+        -> reward points : int
+        -> status : String
+   => debit
+        -> card number : int
+        -> cvv : int
+        -> expire : int
+        -> password : int
+        -> transaction limit : int
+        -> linked account number : int
+        -> status : String
+
+- accounts
+   => checking
+        -> account number : int
+        -> current balance : int
+        -> overdraft limit : int
+        -> nominee name : String
+   => savings
+        -> account number : int
+        -> current balance : int
+        -> interest rate : int
+        -> nominee name : String
+   => fixed deposit
+        -> fd number : int
+        -> principal amount : int
+        -> intrest rate : int
+        -> maturity date : int
+        -> auto renewal : String
+
+- loans
+   => personl
+        -> loan account number : int
+        -> loan amount : int
+        -> intrest rate : int
+        -> tenure months : int
+        -> emi amount : int
+   => home
+        -> loan account number : int
+        -> loan amount : int
+        -> property address : String
+        -> intrest rate : int
+        -> remaining tenure : int
+	-> emi amount : int
+
+- bonds
+   => general bond
+        -> bond id : int
+        -> issuer : String
+        -> maturity date : int
+        -> face value : int
+   => gold bond
+        -> bond id : int
+        -> weight in grams : int
+        -> purity carat : int
+        -> purchase price : int
+        -> current market value : int
+
+transaction
+- transaction id : int
+- date : int
+- time : int
+- type : String
+- amount : int
+- description : String
+- status : String
+- source account : int
+- destination account : int
+- reference number : int
+
+statement
+- statement id : int
+- account number : int
+- period : String
+- generated date : int
+- start date : int
+- end date : int
+- opening balance : int
+- closing balance : int
+- total credited : int
+- total debited : int
+
+
+
+
+
+Functions:
+
+Bank
+-get Branch Details()
+-update Swift Code()
+-add New Branch()
+-verify IFSC()
+
+Customer
+-register Customer()
+-update Address()
+-verify KYC()
+-get Profile Details()
+-reset Password()
+
+Prospect
+-create Prospect()
+-update Interest Level()
+-contact Prospect()
+-convert To Customer()
+
+Product: 
+-Cards
+     =>Credit Card
+	->make Payment()
+	->pay Bill()
+	->check Available Limit()
+	->redeem Reward Points()
+	->block Card()
+
+      =>Debit Card
+	->withdraw Cash()
+	->change Pin()
+	->check Transaction Limit()
+	->block Card()
+-Accounts
+     =>Checking Account
+	->deposit Funds()
+	->withdraw Funds()
+	->check Overdraft Limit()
+	->issue Cheque()
+     =>Savings Account
+	->deposit Funds()
+	->withdraw Funds()
+	->calculate Interest()
+	->add Nominee()
+     =>Fixed Deposit (FD)
+	calculate Maturity Amount()
+	renew FD()
+	premature closure()
+	change Auto-Renewal Status()
+-Loans
+     =>Personal Loan
+	->apply For Loan()
+	->calculate EMI()
+	->pay EMI()
+	->check Outstanding Balance()
+	->foreclose Loan()
+     =>Home Loan
+	->calculate EMI()
+	->pay EMI()
+	->update Property Details()
+	->generate Tax Certificate()
+-Bonds
+     =>General Bond
+	->calculate Yield()
+	->check Maturity Status()
+	->redeem Bond()
+     =>Gold Bond
+	->update Current Market Value()
+	->calculate Gold Value()
+	->sell Bond()
+
+Transaction
+-initiate Transaction()
+-validate Funds()
+-commit Transaction()
+-rollback Failed Transaction() 
+-get Transaction Receipt()
+
+Statement
+-generate Statement()
+-filter By Date Range()
+-calculate Total Credits()
+-calculate Total Debits()
+-download PDF()
+
+
+
+
+
+
+Heirarchy/inheritance:
+
+class Product
+
+class Card extends Product
+class Account extends Product
+class Loan extends Product
+class Bond extends Product
+
+class Credit Card extends Card
+class Debit Card extends Card
+class Checking Account extends Account
+class Savings Account extends Account
+class Fixed Deposit extends Account
+class Personal Loan extends Loan
+class Home Loan extends Loan
+class General Bond extends Bond
+class Gold Bond extends Bond
+
+
+
+
+assotation:
+
+Bank one => many Customer : serves
+Bank one => many Prospect : tracks
+Prospect -> Customer : converts To
+
+Customer one => many Account : owns
+Customer one => many Card : holds
+Customer one => many Loan : borrows
+Customer one => many Bond : invests In
+
+Account one => many Statement : statements
+
+Transaction many - one Account : source
+Transaction many - one Account : destination
+
+Debit Card many - one Account : linked To
+
+
+
+
+
+
+
