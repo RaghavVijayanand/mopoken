@@ -1,6 +1,6 @@
 public class IfElse {
 
-    public static String evaluateTokensAsString(String[] tokens, int start, String[][] vars, int varCount) {
+    public static int evaluateTokens(String[] tokens, int start, String[][] vars, int varCount) {
         int idx = start;
         int condition;
         if (tokens[idx].equals("(")) {
@@ -31,9 +31,9 @@ public class IfElse {
             idx++;
         }
         
-        String trueVal;
+        int trueVal;
         if (tokens[idx].equals("(")) {
-            trueVal = String.valueOf(prefix.evaluateExpr(tokens, idx, vars, varCount));
+            trueVal = prefix.evaluateExpr(tokens, idx, vars, varCount);
             int parenCount = 1;
             idx++;
             while (parenCount > 0) {
@@ -42,42 +42,20 @@ public class IfElse {
                 idx++;
             }
         } else {
-            String val = tokens[idx];
-            // Check if it's a string literal (quoted)
-            if (val.startsWith("\"") && val.endsWith("\"")) {
-                trueVal = val.substring(1, val.length() - 1);
-            } else {
-                val = getVarValue(val, vars, varCount);
-                trueVal = val;
-            }
+            String val = getVarValue(tokens[idx], vars, varCount);
+            trueVal = Integer.parseInt(val);
             idx++;
         }
         
-        String falseVal;
+        int falseVal;
         if (tokens[idx].equals("(")) {
-            falseVal = String.valueOf(prefix.evaluateExpr(tokens, idx, vars, varCount));
+            falseVal = prefix.evaluateExpr(tokens, idx, vars, varCount);
         } else {
-            String val = tokens[idx];
-            // Check if it's a string literal (quoted)
-            if (val.startsWith("\"") && val.endsWith("\"")) {
-                falseVal = val.substring(1, val.length() - 1);
-            } else {
-                val = getVarValue(val, vars, varCount);
-                falseVal = val;
-            }
+            String val = getVarValue(tokens[idx], vars, varCount);
+            falseVal = Integer.parseInt(val);
         }
         
         return condition != 0 ? trueVal : falseVal;
-    }
-
-    public static int evaluateTokens(String[] tokens, int start, String[][] vars, int varCount) {
-        String result = evaluateTokensAsString(tokens, start, vars, varCount);
-        try {
-            return Integer.parseInt(result);
-        } catch (NumberFormatException e) {
-            System.out.println(result);
-            return 0;
-        }
     }
     
     private static String getVarValue(String name, String[][] vars, int varCount) {

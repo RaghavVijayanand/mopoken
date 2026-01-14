@@ -32,7 +32,7 @@ public class AST{
                     i++;
                 }
                 else if (cmd.equals("if")) {
-                    String result = IfElse.evaluateTokensAsString(tokens, i+1, vars, varCount);
+                    int result = IfElse.evaluateTokens(tokens, i+1, vars, varCount);
                     System.out.println(result);
                     while (!tokens[i].equals(")")) i++;
                     i++;
@@ -93,5 +93,10 @@ public class AST{
             parser(tokens);
         }
         scanner.close();
+    }
+
+    public static void testing(String input) {
+        String[] tokens = lexer(input);
+        parser(tokens);
     }
 }
