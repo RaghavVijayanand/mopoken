@@ -1,3 +1,4 @@
+package com.example;
 public class variable {
     public static void main(String[] args) {
         String[][] vars = new String[100][2];

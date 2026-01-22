@@ -1,3 +1,4 @@
+package com.example;
 import java.util.*;
 public class AST{
     static String[][] vars = new String[100][2];

@@ -1,3 +1,5 @@
+package com.example;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +23,7 @@ public class Prefixtest {
         "(+ -5 5), 0",
         "(+ 100 -50), 50"
     })
-    @DisplayName("Addition tests")
+    @DisplayName("Addition")
     void testAddition(String expr, int expected) {
         Object result = interpreter.evaluate(expr);
         assertEquals(expected, result);
@@ -35,7 +37,7 @@ public class Prefixtest {
         "(- -5 5), -10",
         "(- 100 50), 50"
     })
-    @DisplayName("Subtraction tests")
+    @DisplayName("Subtraction")
     void testSubtraction(String expr, int expected) {
         Object result = interpreter.evaluate(expr);
         assertEquals(expected, result);
@@ -49,7 +51,7 @@ public class Prefixtest {
         "(* -5 3), -15",
         "(* -2 -4), 8"
     })
-    @DisplayName("Multiplication tests")
+    @DisplayName("Multiplication")
     void testMultiplication(String expr, int expected) {
         Object result = interpreter.evaluate(expr);
         assertEquals(expected, result);
@@ -63,7 +65,7 @@ public class Prefixtest {
         "(/ -10 2), -5",
         "(/ -20 -4), 5"
     })
-    @DisplayName("Division tests")
+    @DisplayName("Division")
     void testDivision(String expr, int expected) {
         Object result = interpreter.evaluate(expr);
         assertEquals(expected, result);
@@ -76,7 +78,7 @@ public class Prefixtest {
         "(* (+ 2 3) (- 10 5)), 25",
         "(/ (+ 20 10) (- 10 5)), 6"
     })
-    @DisplayName("Nested operations tests")
+    @DisplayName("Nested operations")
     void testNestedOperations(String expr, int expected) {
         Object result = interpreter.evaluate(expr);
         assertEquals(expected, result);

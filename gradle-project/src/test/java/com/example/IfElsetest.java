@@ -15,7 +15,7 @@ public class IfElsetest {
         "(if (10 > 10) 100 200), 200",
         "(if (15 > 5) 50 75), 50"
     })
-    @DisplayName("Greater than tests")
+    @DisplayName("Greater than")
     void testGreaterThan(String expr, int expected) {
         int result = IfElse.evaluate(expr);
         assertEquals(expected, result);
@@ -27,7 +27,7 @@ public class IfElsetest {
         "(if (10 < 10) 100 200), 200",
         "(if (2 < 8) 30 40), 30"
     })
-    @DisplayName("Less than tests")
+    @DisplayName("Less than")
     void testLessThan(String expr, int expected) {
         int result = IfElse.evaluate(expr);
         assertEquals(expected, result);
@@ -39,7 +39,7 @@ public class IfElsetest {
         "(if (0 = 0) 100 200), 100",
         "(if (10 = 5) 50 75), 75"
     })
-    @DisplayName("Equality tests")
+    @DisplayName("Equality")
     void testEquality(String expr, int expected) {
         int result = IfElse.evaluate(expr);
         assertEquals(expected, result);
@@ -52,7 +52,7 @@ public class IfElsetest {
         "(if (3 >= 5) 10 20), 20",
         "(if (10 >= 10) 100 200), 100"
     })
-    @DisplayName("Greater than or equal tests")
+    @DisplayName("Greater than or equal")
     void testGreaterThanOrEqual(String expr, int expected) {
         int result = IfElse.evaluate(expr);
         assertEquals(expected, result);
@@ -65,7 +65,7 @@ public class IfElsetest {
         "(if (5 <= 3) 10 20), 20",
         "(if (10 <= 10) 100 200), 100"
     })
-    @DisplayName("Less than or equal tests")
+    @DisplayName("Less than or equal")
     void testLessThanOrEqual(String expr, int expected) {
         int result = IfElse.evaluate(expr);
         assertEquals(expected, result);
@@ -79,7 +79,7 @@ public class IfElsetest {
         "(if (-10 >= -5) 50 75), 75",
         "(if (-5 <= -3) 30 40), 30"
     })
-    @DisplayName("Negative number tests")
+    @DisplayName("Negative numbers")
     void testNegativeNumbers(String expr, int expected) {
         int result = IfElse.evaluate(expr);
         assertEquals(expected, result);
